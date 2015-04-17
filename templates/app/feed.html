@@ -1,0 +1,11 @@
+<ion-view title="Feed" id="feed-view">
+  <ion-nav-title>Feed</ion-nav-title>
+  <ion-content>
+    <div class="padding">
+      <div class="post" ng-repeat="post in posts">
+        <p>{{ post.message }}</p>
+        <h4>By {{ post.author }}</h4>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
