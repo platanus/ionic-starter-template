@@ -30,10 +30,10 @@ angular.module('app.services')
         service.login(userData.email, userData.password).then(function(loginData){
           deferred.resolve(loginData); // Signup and login successful
         }, function(loginData){
-          deferred.reject(loginData); // Signup successful, login failed
+          deferred.reject(loginData.$response.data); // Signup successful, login failed
         });
       }, function(signupData){
-        deferred.reject(signupData); // Signup unsuccessful
+        deferred.reject(signupData.$response.data); // Signup unsuccessful
       });
 
       return deferred.promise;
@@ -48,7 +48,7 @@ angular.module('app.services')
         setCurrentUser(data);
         deferred.resolve(data); // Login successful
       }, function(data){
-        deferred.reject(data); // Login unsuccesful
+        deferred.reject(data.$response.data); // Login unsuccesful
       });
 
       return deferred.promise;
