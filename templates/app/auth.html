@@ -1,0 +1,13 @@
+<ion-view title="Auth" id="feed-view">
+  <ion-nav-title>Auth</ion-nav-title>
+  <ion-content class="padding">
+    <div ng-if="loggedIn()">
+      <h2>You are {{ currentUser().email }}</h2>
+      <button ng-click="logout()" class="button">Log out</button>
+    </div>
+    <div ng-if="!loggedIn()">
+      <button ng-click="signupExample()" class="button button-block button-calm">Sign up as example@domain.com</button>
+      <button ng-click="loginExample()" class="button button-block">Login as example@domain.com</button>
+    </div>
+  </ion-content>
+</ion-view>
