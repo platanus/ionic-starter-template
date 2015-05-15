@@ -1,6 +1,10 @@
 <ion-view title="Feed" id="feed-view">
   <ion-nav-title>Feed</ion-nav-title>
   <ion-content>
+    <div class="padding login-status">
+      <span ng-if="loggedIn()">Logged in!</span>
+      <span ng-if="!loggedIn()">Logged out :(</span>
+    </div>
     <div class="padding">
       <div class="post" ng-repeat="post in posts">
         <p>{{ post.message }}</p>

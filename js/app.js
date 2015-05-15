@@ -3,10 +3,12 @@ angular.module('app',
     'app.env',
     'ionic', 
     'restmod',
+    'PlAuth', 
+    'LocalStorageModule',
     'app.controllers', 
     'app.directives',
     'app.models',
-    'app.services', 
+    'app.services'
   ])
 
 .run(function($ionicPlatform) {
@@ -22,8 +24,13 @@ angular.module('app',
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function(restmodProvider, AuthConfigProvider) {
+  AuthConfigProvider.setUidHeaderName('X-MobileUser-Email');
+  AuthConfigProvider.setTokenHeaderName('X-MobileUser-Token');
 
+  restmodProvider.rebase('RootlessAMSApi', function() {
+    this.setUrlPrefix('/api'); // Should be defined in environment file
+  });
 });
 
 angular.module('app.controllers', []);

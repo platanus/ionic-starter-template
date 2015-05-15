@@ -17,12 +17,17 @@
     </ion-header-bar>
     <ion-content>
       <ion-list>
-        <ion-item class="user">
-          <img ng-src="{{ user.pictureURL }}">
-          <span>¡Hola, {{ user.name }}!</span>
+        <ion-item ng-if="loggedIn()" class="user">
+          <span>Welcome back,<br>{{ currentUser().email }}</span>
+          <button menu-close ng-click="logout()" class="button button-block button-assertive">Logout</button>
+        </ion-item>
+        <ion-item ng-if="!loggedIn()" class="user">
+          <span>Hello stranger!</span>
+          <button menu-close ui-sref="app.auth" class="button button-block button-calm">Log in / Sign up</button>
         </ion-item>
         <ion-item ui-sref="app.feed" menu-close>Home</ion-item>
         <ion-item ui-sref="app.turnBlue" menu-close>Turn Blue</ion-item>
+        <ion-item ui-sref="app.protected" menu-close>Protected page</ion-item>
       </ion-list>
     </ion-content>
   </ion-side-menu>
